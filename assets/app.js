@@ -71,38 +71,38 @@ menubar();
 
 // seraching 
 
-async function searchitem(item){
- let res= await fetch(SEARCH_API+item)
- let data = await res.json()
- return data
+// async function searchitem(item){
+//  let res= await fetch(SEARCH_API+item)
+//  let data = await res.json()
+//  return data
  
-}
+// }
 
-// let input=document.getElementById('input').value.trim()
-let btn=document.getElementById('searchbtn')
-let searchitemdisplay=document.getElementById('searchitemdisplay')
-btn.addEventListener('click',async ()=>{
-  let input=document.getElementById('input').value.trim()
- let res= await  searchitem(input)
+// // let input=document.getElementById('input').value.trim()
+// let btn=document.getElementById('searchbtn')
+// let searchitemdisplay=document.getElementById('searchitemdisplay')
+// btn.addEventListener('click',async ()=>{
+//   let input=document.getElementById('input').value.trim()
+//  let res= await  searchitem(input)
  
- let ar=res.meals;
- searchitemdisplay.innerHTML='';
- ar.forEach((item)=>{
-   let card = document.createElement('div');
-    card.className = 'card col-12 col-md-6 col-lg-3 m-lg-3 p-2 text-center text-white';
-    card.innerHTML = `
-      <img src="${item.strMealThumb}" alt="${item.strMeal}" class="img1 pb-1 rounded">
-      <p class="fw-light rounded px-2 py-1 fs-6 fs-md-5 fs-lg-4">${item.strMeal}</p>
-    `;
+//  let ar=res.meals;
+//  searchitemdisplay.innerHTML='';
+//  ar.forEach((item)=>{
+//    let card = document.createElement('div');
+//     card.className = 'card col-12 col-md-6 col-lg-3 m-lg-3 p-2 text-center text-white';
+//     card.innerHTML = `
+//       <img src="${item.strMealThumb}" alt="${item.strMeal}" class="img1 pb-1 rounded">
+//       <p class="fw-light rounded px-2 py-1 fs-6 fs-md-5 fs-lg-4">${item.strMeal}</p>
+//     `;
 
-    // card.addEventListener('click',()=>{
-    //   detailsitem(item.idMeal)
-    // })
+//     // card.addEventListener('click',()=>{
+//     //   detailsitem(item.idMeal)
+//     // })
     
-  searchitemdisplay.appendChild(card)
- })
+//   searchitemdisplay.appendChild(card)
+//  })
  
-})
+// })
 // food details
 // async function detailsitem(item) {
 //   let res=await fetch(DETAILS_API+item)
@@ -110,3 +110,51 @@ btn.addEventListener('click',async ()=>{
 //   console.log(data);
   
 // }
+
+async function searchitem(item) {
+  let res = await fetch(SEARCH_API + item);
+  let data = await res.json();
+  return data;
+}
+
+let btn = document.getElementById('searchbtn');
+let searchitemdisplay = document.getElementById('searchitemdisplay');
+
+btn.addEventListener('click', async () => {
+
+  let input = document.getElementById('input').value.trim();
+
+  // CASE 1: Input empty
+  if (input === "") {
+    searchitemdisplay.innerHTML = `
+      <p class="text-white fs-5 text-center"> Please enter a search item</p>
+    `;
+    return;  // stop execution
+  }
+
+  let res = await searchitem(input);
+  let ar = res.meals;
+
+  // CASE 2: No results
+  if (!ar) {
+    searchitemdisplay.innerHTML = `
+      <p class="text-white fs-5 text-center"> No items found for "<b>${input}</b>"</p>
+    `;
+    return;
+  }
+
+  // CASE 3: Display items
+  searchitemdisplay.innerHTML = "";
+  ar.forEach((item) => {
+    let card = document.createElement("div");
+    card.className =
+      "card col-12 col-md-6 col-lg-3 m-lg-3 p-2 text-center text-white";
+    card.innerHTML = `
+      <img src="${item.strMealThumb}" alt="${item.strMeal}" class="img1 pb-1 rounded">
+      <p class="fw-light rounded px-2 py-1 fs-6 fs-md-5 fs-lg-4">${item.strMeal}</p>
+    `;
+    searchitemdisplay.appendChild(card);
+  });
+});
+  
+
