@@ -1,10 +1,15 @@
+body{
+  background-color:#28282b;
+}
+
+
 *{
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
 }
 :root {
-  --bg:  rgb(32, 10, 232);
+  --bg:  rgb(10, 173, 232);
   --text: #e5e7eb;
   --bs-secondary: #e75710;
   --bs-danger:var(--bg);
@@ -21,7 +26,16 @@
 
 .navbar{
     background-color: var(--bg);
+    /* glassmorhism */
+
+    background: rgba(7, 105, 217, 0.464);   
+    backdrop-filter: blur(10px);            
+    -webkit-backdrop-filter: blur(10px);    
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
 }
+
+
 #home{
     position: relative;
     /* height: 90vh; */
@@ -52,7 +66,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 200px;
+  width: 300px;
 }
 .search-box input {
   border: none;
@@ -104,9 +118,28 @@
 /* categorey */
 .card{
     /* width: 30%; */
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    place-items:end; 
+    /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    place-items:end;  */
+    /* glassmaorhism */
+
+    /* width: 30%; */
+    background: rgba(255, 255, 255, 0.15); /* Transparent glass */
+    backdrop-filter: blur(10px);           /* Main blur */
+    -webkit-backdrop-filter: blur(10px);   /* Safari support */
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    padding: 20px;
+    place-items: end;
 }
+.card:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-5px);
+    transition: 0.3s ease-in-out;
+}
+
+
+
 .card p{
   background-color: var(--bg);
 }
