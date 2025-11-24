@@ -26,7 +26,7 @@ body{
 
 .navbar{
     background-color: var(--bg);
-    /* glassmorhism */
+
 
     background: rgba(7, 105, 217, 0.464);   
     backdrop-filter: blur(10px);            
@@ -117,15 +117,10 @@ body{
 
 /* categorey */
 .card{
-    /* width: 30%; */
-    /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    place-items:end;  */
-    /* glassmaorhism */
 
-    /* width: 30%; */
-    background: rgba(255, 255, 255, 0.15); /* Transparent glass */
-    backdrop-filter: blur(10px);           /* Main blur */
-    -webkit-backdrop-filter: blur(10px);   /* Safari support */
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(10px);         
+    -webkit-backdrop-filter: blur(10px);   
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
